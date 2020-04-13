@@ -22,7 +22,7 @@ class GamesController < ApplicationController
       defeat_processing
       reappear_monster
     end
-     @all_messages = all_messages
+    @all_messages = all_messages
   end
 
   private
@@ -44,12 +44,12 @@ class GamesController < ApplicationController
     @brave = current_user.brave
     # 経験値を追加
     @brave.exp += session[:monster]['exp']# レベルアップしているか判定し，レベルアップしているときはステータスをアップさせ，メッセージを作成する
-     # レベルアップしているか判定し，レベルアップしているときはステータスをアップさせ，メッセージを作成する
-     level_up_times = @brave.current_level - @brave.level
-     if level_up_times > 0
-       @brave.status_up(level_up_times)
-       @level_up_messages = Message.level_up(@brave)
-     end
+    # レベルアップしているか判定し，レベルアップしているときはステータスをアップさせ，メッセージを作成する
+    level_up_times = @brave.current_level - @brave.level
+    if level_up_times > 0
+      @brave.status_up(level_up_times)
+      @level_up_messages = Message.level_up(@brave)
+    end
     # level_up_times = @brave.current_level - @brave.level
     # if level_up_times > 0
     #   @brave.status_up(level_up_times)
